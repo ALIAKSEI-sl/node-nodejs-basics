@@ -12,7 +12,7 @@ const create = async () => {
 
     try {
         await writeFile(src, content, { flag: 'wx' });
-    } catch (e) {
+    } catch (error) {
         throw new Error(errorMessage);
     }
 };

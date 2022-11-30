@@ -7,14 +7,14 @@ const __dirname = dirname(__filename);
 
 const copy = async () => {
     const srcFiles = `${__dirname}/files`;
-    const srcFilesCopy = `${__dirname}/files_copy`;
-    const dirFiles = await readdir(srcFiles);
+    const srcFilesCopy = `${__dirname}/files_copy`;    
     const errorMessage = 'FS operation failed';
     try {
+        const dirFiles = await readdir(srcFiles);
         await mkdir(srcFilesCopy);
-        await Promise.all(dirFiles.map((elem) => copyFile(`${srcFiles}/${elem}`, `${srcFilesCopy}/${elem}`)))
-    } catch {
-        throw new Error(errorMessage)
+        await Promise.all(dirFiles.map((elem) => copyFile(`${srcFiles}/${elem}`, `${srcFilesCopy}/${elem}`)));
+    } catch(error) {
+        throw new Error(errorMessage);
     }
 };
 

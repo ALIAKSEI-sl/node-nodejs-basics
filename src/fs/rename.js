@@ -12,7 +12,7 @@ const rename = async () => {
 
     try {
         await getNewName(srcWrongFile, srcProperFile);
-    } catch(er) {
+    } catch(error) {
         throw new Error(errorMessage);
     }
 };

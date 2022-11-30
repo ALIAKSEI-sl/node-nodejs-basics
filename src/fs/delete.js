@@ -10,8 +10,8 @@ const remove = async () => {
     const errorMessage = 'FS operation failed';
 
     try{
-        await rm(src)
-    } catch {
+        await rm(src);
+    } catch(error) {
         throw new Error(errorMessage);
     }
     
