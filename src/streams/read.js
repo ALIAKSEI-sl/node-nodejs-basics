@@ -8,8 +8,8 @@ const __dirname = dirname(__filename);
 const read = async () => {
     const srcFiles = `${__dirname}/files/fileToRead.txt`;
     const readStream = createReadStream(srcFiles, { encoding: 'utf8' });
-    readStream.on( 'data', (chunk) => {        
-        console.log(chunk);
+    readStream.on( 'data', (chunk) => {
+        process.stdout.write(chunk);        
     })
 };
 
