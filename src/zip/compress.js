@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const compress = async () => {
     const srcFile = `${__dirname}/files/fileToCompress.txt`;
     const srcFileZip = `${__dirname}/files/archive.gz`;
-    const readableStream = createReadStream(srcFile, { encoding: 'utf8' });
+    const readableStream = createReadStream(srcFile);
     const writeableStream = createWriteStream(srcFileZip);
     const gzip = createGzip();
 
