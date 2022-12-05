@@ -1,4 +1,4 @@
-import { dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { cpus } from 'node:os';
 import { Worker } from 'node:worker_threads';
@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const performCalculations = async () => {
-    const src = `${__dirname}/worker.js`;
+    const src = join(__dirname, 'worker.js');
     const myCpus = cpus();
     let count = 10;
 
