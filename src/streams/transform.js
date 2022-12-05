@@ -4,25 +4,21 @@ import { EOL } from 'node:os';
 const transform = async () => {
     const reverse = new Transform({
         transform(chunk, encoding, callback) {
-            const textContent = String(chunk).replace(EOL, '');
+            const textContent = String(chunk).replace(EOL, ''); // or use string.trim()
             const arrayReverse = textContent.split('').reverse();
-            const textReverse = arrayReverse.join('') + EOL;
+            const textReverse = arrayReverse.join('') + EOL; // add \n
             callback(null, textReverse);
         }
     });
+
     pipeline(
         process.stdin,
         reverse,
         process.stdout,
-        (err) => {
-            if (err) {
-                console.error('Unsuccessful', err);
-            } else {
-                console.log('Successfully');
-            }
+        err => {            
+            console.error(`Error: ${err}`);            
         }
-    )
-    //process.stdin.pipe(reverse).pipe(process.stdout)
+    );   
 };
 
 transform();

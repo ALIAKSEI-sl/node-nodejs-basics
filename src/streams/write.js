@@ -8,9 +8,10 @@ const __dirname = dirname(__filename);
 const write = async () => {
     const srcFiles = join(__dirname, 'files', 'fileToWrite.txt');
     const writeStream = createWriteStream(srcFiles);
-    process.stdin.on( 'data', (chunk) => {
-        writeStream.write(chunk);        
-    })
+    process.stdin.pipe(writeStream);
+    // process.stdin.on( 'data', (chunk) => {
+    //     writeStream.write(chunk);        
+    // });
 };
 
 write();
