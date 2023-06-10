@@ -1,5 +1,17 @@
+import { createWriteStream } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const write = async () => {
-    // Write your code here 
+    const srcFiles = join(__dirname, 'files', 'fileToWrite.txt');
+    const writeStream = createWriteStream(srcFiles);
+    process.stdin.pipe(writeStream);
+    // process.stdin.on( 'data', (chunk) => {
+    //     writeStream.write(chunk);        
+    // });
 };
 
-await write();
+write();
